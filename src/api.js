@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // This is your FastAPI backend URL
-const BASE_URL = 'http://localhost:8000'
+const BASE_URL = 'https://web-production-c58a.up.railway.app'
 
 // axios.create() makes a reusable HTTP client
 // Every request made with `api` will automatically go to BASE_URL
