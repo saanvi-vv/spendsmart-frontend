@@ -34,7 +34,7 @@ export default function Dashboard() {
   // Add expense form
   const [showForm, setShowForm] = useState(false)
   const [formData, setFormData] = useState({
-    title: '', amount: '', category: 'Food', notes: ''
+  title: '', amount: '', category: 'Food', notes: '', date: ''
   })
 
   // Edit expense
@@ -117,7 +117,8 @@ export default function Dashboard() {
         title: formData.title,
         amount: parseFloat(formData.amount),
         category: formData.category,
-        notes: formData.notes || null
+        notes: formData.notes || null,
+        date: formData.date ? new Date(formData.date).toISOString() : null
       }
 
       if (editingId) {
@@ -349,6 +350,16 @@ export default function Dashboard() {
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   placeholder="e.g. Biryani from dhaba"
+                  className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-400 mb-1">Date</label>
+                <input
+                  type="date"
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  max={new Date().toISOString().split('T')[0]}
                   className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500"
                 />
               </div>
